@@ -22,7 +22,7 @@
     }
   },
   "is_new": false,
-  "trajectories_available": false,
+  "trajectories_available": true,
   "trajectory_files": {
     "airline": "airline",
     "retail": "retail",
@@ -32,11 +32,11 @@
     "evaluation_date": "2026-10-03",
     "tau2_bench_version": "b7ea9074c1cba482b30687fecdb5c8425fd6f619",
     "user_simulator": "v1.0",
-    "notes": "Custom Salesforce Launa v1 full-duplex voice evaluation using standard benchmark prompts, tools and domain policies, regular speech complexity, seed 300, and the Claude Opus 4.5 hallucination reviewer. The customer simulator uses gpt-5.2-2025-12-11 at temperature 0.",
+    "notes": "Custom Salesforce Launa v1 full-duplex voice evaluation using standard benchmark prompts, tools and domain policies, regular speech complexity, seed 300, and the Claude Opus 4.5 hallucination reviewer. The customer simulator uses gpt-5.2-2025-12-11 at temperature 0. The scored run used a 16,384-token agent context window except retail tasks 98 and 104, which used 32,768 tokens; task 98 was retried after ungraded context-overflow errors. The current endpoint uses 32,768 tokens for every session, so it does not exactly reproduce the submitted run.",
     "verification": {
       "modified_prompts": false,
       "omitted_questions": false,
-      "details": "Benchmark-supplied prompts, domain policies, tools, tasks and evaluator were unchanged. All 278 tasks have one scored canonical trajectory. Trajectories are prepared for separate sharing; they are not yet hosted by the leaderboard."
+      "details": "Benchmark-supplied prompts, domain policies, tools, tasks and evaluator were unchanged. All 278 tasks have one scored canonical trajectory. Trajectories and audio are hosted by the leaderboard."
     }
   },
   "voice_config": {
@@ -50,12 +50,12 @@
     "version": "1.0",
     "config": {
       "tick_duration_sec": 0.2,
-      "no_yield_window_sec": 2,
-      "backchannel_yield_window_sec": 1,
-      "vocal_tic_yield_window_sec": 1,
-      "non_directed_yield_window_sec": 1,
-      "vocal_tic_response_window_sec": 2,
-      "non_directed_response_window_sec": 2
+      "no_yield_window_sec": 2.0,
+      "backchannel_yield_window_sec": 1.0,
+      "vocal_tic_yield_window_sec": 1.0,
+      "non_directed_yield_window_sec": 1.0,
+      "vocal_tic_response_window_sec": 2.0,
+      "non_directed_response_window_sec": 2.0
     },
     "domains": {
       "airline": {
@@ -126,13 +126,13 @@
       "selectivity_vocal_tic": 0.5610070300575319,
       "selectivity_non_directed": 0.1156504070065617,
       "counts": {
-        "n_simulations": 278,
-        "response_total": 2470,
-        "yield_total": 4296,
+        "agent_interrupts_count": 5617,
         "backchannel_total": 186,
-        "vocal_tic_total": 401,
+        "n_simulations": 278,
         "non_directed_total": 347,
-        "agent_interrupts_count": 5617
+        "response_total": 2470,
+        "vocal_tic_total": 401,
+        "yield_total": 4296
       }
     }
   },
